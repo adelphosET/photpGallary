@@ -1,0 +1,43 @@
+[package]
+name = "photo-gallary"
+version = "0.1.0"
+authors = ["abenezer@csa <abenezerhaymanot@gmail.com>"]
+edition = "2024"
+
+
+[lib]
+name = "photo_gallary"
+path = "src/lib.rs"
+
+[dependencies]
+dioxus = { version = "0.6", features = ["router", "fullstack"] }
+dioxus-logger = "0.6.2"
+base64 = "0.22"
+serde = { version = "1.0.215", features = ["derive"] }
+sqlx = { version = "0.8.3", features = [
+  "sqlite",
+  "runtime-tokio",
+  "tls-native-tls",
+], optional = true }
+tokio = { version = "1.20.0", features = ["full"], optional = true }
+tracing = { version = "0.1.41" }
+thiserror = { version = "2.0.12" }
+
+[features]
+default = []
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
+server = ["dioxus/server", "sqlx", "dep:tokio"]
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
