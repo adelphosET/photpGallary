@@ -1,8 +1,7 @@
 use crate::{app::ImageDB, backend::server_backend::insert_image};
+use dioxus::prelude::dioxus_elements::FileEngine;
 use dioxus::prelude::*;
-use dioxus::{html::HasFileData, prelude::dioxus_elements::FileEngine};
-use dioxus_logger::tracing::error;
-use serde::{Deserialize, Serialize};
+use dioxus_logger::tracing::{error, info};
 use std::sync::Arc;
 
 #[component]
@@ -107,6 +106,10 @@ pub fn UploadImageHander(category: String) -> Element {
                     onclick: submit_files,
                     "Submit Selected Photos"
                 }
+                br {}
+                br {}
+                br {}
+                br {}
             }
 
             if !files_uploaded.read().is_empty() {

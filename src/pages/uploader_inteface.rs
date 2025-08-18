@@ -3,20 +3,20 @@ use crate::app::URLRoute;
 use dioxus::prelude::*;
 #[component]
 pub fn UploadImageIntrface() -> Element {
-	rsx!{
+    rsx! {
 
     div { class: "grid grid-cols-1 md:grid-cols-2 gap-6",
         div { class: "max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm",
             a { href: "#",
                 img {
                     alt: "",
-                    class: "rounded-full w-96 h-96",
+                    class: "rounded-t-lg",
                     src: asset!("/assets/data/mesk/CV6A1262.avif"),
                 }
             }
             div { class: "p-5",
-                Link { 
-                	to: URLRoute::UploadImageHander { category : "meskpictures".to_string() },
+                Link {
+                    to: URLRoute::UploadImageHander { category : "wedding_pic".to_string() },
                     h5 { class: "mb-2 text-2xl font-bold tracking-tight text-gray-900",
                         "Photos At Mesk"
                     }
@@ -26,7 +26,7 @@ pub fn UploadImageIntrface() -> Element {
                 }
                 Link {
                     class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300",
-                    to: URLRoute::UploadImageHander { category : "meskpictures".to_string() },
+                    to: URLRoute::UploadImageHander { category : "mesk_pictures".to_string() },
                     "Upload photo"
                     svg {
                         "aria_hidden": true,
@@ -66,8 +66,8 @@ pub fn UploadImageIntrface() -> Element {
                 }
                 Link {
                     class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300",
-                    to: URLRoute::UploadImageHander { category : "kalkidn-sriat".to_string() },
-                    "Read more"
+                    to: URLRoute::UploadImageHander { category : "religious_ritual".to_string() },
+                    "Upload photo"
                     svg {
                         "aria_hidden": true,
                         class: "rtl:rotate-180 w-3.5 h-3.5 ms-2",
@@ -97,7 +97,7 @@ pub fn UploadImageIntrface() -> Element {
             }
             div { class: "p-5",
                 Link {
-                	to: URLRoute::UploadImageHander { category : "famimly".to_string() },
+                    to: URLRoute::UploadImageHander { category : "famimly".to_string() },
                     h5 { class: "mb-2 text-2xl font-bold tracking-tight text-gray-900",
                         "Family"
                     }
@@ -166,5 +166,5 @@ pub fn UploadImageIntrface() -> Element {
             }
         }
     }
-	}
+    }
 }
