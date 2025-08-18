@@ -1,22 +1,17 @@
 use crate::components::navigation::NavigationBar;
-use crate::pages::index::Home;
 use crate::pages::{
-    kalkidan::KalkidanImages, 
-    religious_rituals::ReligiousRituals,
-    uploader::UploadImageHander,
+    gallary::GallaryEexplorer, index::Home, uploader::UploadImageHander,
     uploader_inteface::UploadImageIntrface,
-    we_celeb::HomeWeddingPic, 
-    we_mesk::WeedingMesk,
 };
-use dioxus::document::{Script, Stylesheet};
+use dioxus::document::Stylesheet;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::info;
-use serde::{Serialize,Deserialize};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone,PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct ImageDB {
-    pub id: Option<i64>,   // None when inserting, Some(id) when retrieved
-    pub content: Vec<u8>,   // BLOB ↔ Vec<u8>
+    pub id: Option<i64>, // None when inserting, Some(id) when retrieved
+    pub content: Vec<u8>,
     pub name: String,
     pub category: String,
 }
@@ -24,33 +19,38 @@ pub struct ImageDB {
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 #[component]
 pub fn AppStarter() -> Element {
+
     info!("AppStarter rendered");
     rsx! {
-          Stylesheet {
-            href: TAILWIND_CSS,
-            rel:"stylesheet",
-        }
+        Stylesheet 
+		{ href: TAILWIND_CSS, 
+		  rel: "stylesheet" }
 
         Router::<URLRoute> {}
-
     }
 }
 
 #[derive(Routable, Clone, PartialEq)]
 pub enum URLRoute {
     #[layout(NavigationBar)]
-    #[route("/home_pic")]
-    HomeWeddingPic {},
     #[route("/")]
     Home {},
-    #[route("/mesk")]
-    WeedingMesk {},
-    #[route("/rituals")]
-    ReligiousRituals {},
-    #[route("/kalkidan")]
-    KalkidanImages {},
+    #[route("/show/:category")]
+    GallaryEexplorer { category: String },
     #[route("/up")]
     UploadImageIntrface {},
-    #[route("/uploder/:category/")]
+    #[route("/saver/:category/")]
     UploadImageHander { category: String },
+}
+#[component]
+fn SplashScreen() -> Element {
+    rsx! {
+        div {
+            class: "flex items-center justify-center h-screen bg-blue-600 text-white",
+            div {
+                class: "animate-pulse text-3xl font-bold",
+                " 📸 Photo Gallery"
+            }
+        }
+    }
 }
