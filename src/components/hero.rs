@@ -1,5 +1,5 @@
-use dioxus::prelude::*;
 use crate::app::URLRoute;
+use dioxus::prelude::*;
 #[component]
 pub fn Hero() -> Element {
     rsx! {
@@ -59,7 +59,7 @@ pub fn Hero() -> Element {
                                 }
                                 Link {
                                     class: "text-sm/6 font-semibold text-gray-900",
-                                    to: URLRoute::WeedingMesk {},
+                                    to: URLRoute::GallaryEexplorer { category: "wedding_pic".to_string() },
                                     "See all images"
                                     span { aria_hidden: "true", "→" }
                                 }
@@ -71,7 +71,7 @@ pub fn Hero() -> Element {
                                 }
                                 Link {
                                     class: "text-sm/6 font-semibold text-gray-900",
-                                    to: URLRoute::WeedingMesk {},
+                                     to: URLRoute::GallaryEexplorer { category:"religious_ritual".to_string() } ,
                                     "See all images"
                                     span { aria_hidden: "true", "→" }
                                 }
@@ -83,11 +83,11 @@ pub fn Hero() -> Element {
                                 }
                                 Link {
                                     class: "text-sm/6 font-semibold text-gray-900",
-                                    to: URLRoute::WeedingMesk {},
-                                    "See all images"
+                                    to: URLRoute::GallaryEexplorer { category:"family_picture".to_string() } ,
+                                     "See all images"
                                     span { aria_hidden: "true", "→" }
                                 }
-                            }                            
+                            }
                             div { class: "mt-10 flex items-center justify-center gap-x-6",
                                 a {
                                     class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
@@ -95,7 +95,7 @@ pub fn Hero() -> Element {
                                 }
                                 Link {
                                     class: "text-sm/6 font-semibold text-gray-900",
-                                    to: URLRoute::ReligiousRituals {},
+                                    to: URLRoute::GallaryEexplorer { category:"religious_ritual".to_string() } ,
                                     "See all images"
                                     span { aria_hidden: "true", "→" }
                                 }
